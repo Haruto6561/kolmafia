@@ -19,6 +19,9 @@ public class TerminalRequest extends GenericRequest {
 
   @Override
   public void run() {
+    if (KoLCharacter.inSmallcore()) {
+      RequestThread.postRequest(new CampgroundRequest("terminal"));
+    }
     if (!KoLCharacter.inNuclearAutumn()
         && !KoLConstants.campground.contains(ItemPool.get(ItemPool.SOURCE_TERMINAL))) {
       KoLmafia.updateDisplay(KoLConstants.MafiaState.ERROR, "You don't have a Source terminal.");
