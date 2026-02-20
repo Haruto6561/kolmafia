@@ -19,16 +19,6 @@ public class TerminalRequest extends GenericRequest {
 
   @Override
   public void run() {
-    if (!KoLCharacter.inNuclearAutumn()
-        && !KoLConstants.campground.contains(ItemPool.get(ItemPool.SOURCE_TERMINAL))) {
-      KoLmafia.updateDisplay(KoLConstants.MafiaState.ERROR, "You don't have a Source terminal.");
-      return;
-    }
-    if (KoLCharacter.inNuclearAutumn()
-        && !KoLConstants.falloutShelter.contains(ItemPool.get(ItemPool.SOURCE_TERMINAL))) {
-      KoLmafia.updateDisplay(KoLConstants.MafiaState.ERROR, "You don't have a Source terminal.");
-      return;
-    }
     if (KoLCharacter.inNuclearAutumn()) {
       RequestThread.postRequest(new FalloutShelterRequest("vault_term"));
     } else {
